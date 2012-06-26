@@ -28,7 +28,7 @@ namespace Zend\Service\AgileZen;
  * @copyright  Copyright (c) 2005-2012 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
-abstract class Entity
+abstract class AbstractEntity
 {
     /**
      * Id of the entity
@@ -50,7 +50,8 @@ abstract class Entity
     /**
      * Constructor
      * 
-     * @param string $id 
+     * @param string $id
+     * @throws Exception\InvalidArgumentException
      */
     public function __construct($id) 
     {

@@ -14,21 +14,20 @@
  *
  * @category   Zend
  * @package    Zend_Service
- * @subpackage AgileZen_Resources
+ * @subpackage AgileZen
  * @copyright  Copyright (c) 2005-2012 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
 
-namespace Zend\Service\AgileZen\Resources;
-
-use Zend\Service\AgileZen\Exception as AgileZenException;
+namespace Zend\Service\AgileZen\Exception;
 
 /**
  * @category   Zend
  * @package    Zend_Service
- * @subpackage AgileZen_Resources
+ * @subpackage AgileZen
  * @copyright  Copyright (c) 2005-2012 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
-interface Exception extends AgileZenException
-{}
+interface ExceptionInterface
+{
+}
