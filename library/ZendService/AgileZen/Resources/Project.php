@@ -8,10 +8,10 @@
  * @package   Zend_Service
  */
 
-namespace Zend\Service\AgileZen\Resources;
+namespace ZendService\AgileZen\Resources;
 
-use Zend\Service\AgileZen\AbstractEntity;
-use Zend\Service\AgileZen\AgileZen;
+use ZendService\AgileZen\AbstractEntity;
+use ZendService\AgileZen\AgileZen;
 
 /**
  * @category   Zend
@@ -122,7 +122,7 @@ class Project extends AbstractEntity
     /**
      * Get the members of the project
      *
-     * @return Zend\Service\AgileZen\Container
+     * @return ZendService\AgileZen\Container
      */
     public function getMembers()
     {
@@ -155,7 +155,7 @@ class Project extends AbstractEntity
      * Get the phases of the project
      *
      * @param  array $params
-     * @return \Zend\Service\AgileZen\Container
+     * @return \ZendService\AgileZen\Container
      */
     public function getPhases($params=array())
     {
@@ -166,7 +166,7 @@ class Project extends AbstractEntity
      * Get the stories of the project
      *
      * @param  array $params
-     * @return \Zend\Service\AgileZen\Container
+     * @return \ZendService\AgileZen\Container
      */
     public function getStories($params=array())
     {

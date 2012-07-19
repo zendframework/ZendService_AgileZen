@@ -8,9 +8,9 @@
  * @package   Zend_Service
  */
 
-namespace ZendTest\Service\AgileZen;
+namespace ZendServiceTest\AgileZen;
 
-use Zend\Service\AgileZen\AgileZen as AgileZenService;
+use ZendService\AgileZen\AgileZen as AgileZenService;
 
 class InviteTest extends \PHPUnit_Framework_TestCase
 {
@@ -19,7 +19,7 @@ class InviteTest extends \PHPUnit_Framework_TestCase
     public function setUp()
     {
         if (!constant('TESTS_ZEND_SERVICE_AGILEZEN_ONLINE_ENABLED')) {
-            self::markTestSkipped('Zend\Service\AgileZen tests are not enabled');
+            self::markTestSkipped('ZendService\AgileZen tests are not enabled');
         }
         if(!defined('TESTS_ZEND_SERVICE_AGILEZEN_ONLINE_APIKEY')) {
             self::markTestSkipped('The ApiKey costant has to be set.');
@@ -47,7 +47,7 @@ class InviteTest extends \PHPUnit_Framework_TestCase
         );
         $this->assertTrue($this->agileZen->isSuccessful());
         if (!empty($invite)) {
-            $this->assertTrue($invite instanceof \Zend\Service\AgileZen\Resources\Invite);
+            $this->assertTrue($invite instanceof \ZendService\AgileZen\Resources\Invite);
             $this->assertEquals(constant('TESTS_ZEND_SERVICE_AGILEZEN_ONLINE_INVITE_EMAIL'), $invite->getEmail());
             self::$inviteId = $invite->getId();
         }
@@ -62,9 +62,9 @@ class InviteTest extends \PHPUnit_Framework_TestCase
             $this->markTestSkipped('No invites founded for the project Id ' .
                     constant('TESTS_ZEND_SERVICE_AGILEZEN_ONLINE_PROJECT_ID'));
         }
-        $this->assertTrue($invites instanceof \Zend\Service\AgileZen\Container);
+        $this->assertTrue($invites instanceof \ZendService\AgileZen\Container);
         foreach ($invites as $invite) {
-            $this->assertTrue($invite instanceof \Zend\Service\AgileZen\Resources\Invite);
+            $this->assertTrue($invite instanceof \ZendService\AgileZen\Resources\Invite);
         }
     }
     public function testGetInvite()
@@ -78,7 +78,7 @@ class InviteTest extends \PHPUnit_Framework_TestCase
                 self::$inviteId
         );
         $this->assertTrue($this->agileZen->isSuccessful());
-        $this->assertTrue($invite instanceof \Zend\Service\AgileZen\Resources\Invite);
+        $this->assertTrue($invite instanceof \ZendService\AgileZen\Resources\Invite);
         $this->assertEquals(self::$inviteId, $invite->getId());
         $this->assertEquals(constant('TESTS_ZEND_SERVICE_AGILEZEN_ONLINE_INVITE_EMAIL'), $invite->getEmail());
     }

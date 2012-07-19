@@ -8,10 +8,10 @@
  * @package   Zend_Service
  */
 
-namespace Zend\Service\AgileZen\Resources;
+namespace ZendService\AgileZen\Resources;
 
-use Zend\Service\AgileZen\AbstractEntity;
-use Zend\Service\AgileZen\AgileZen;
+use ZendService\AgileZen\AbstractEntity;
+use ZendService\AgileZen\AgileZen;
 
 /**
  * @category   Zend

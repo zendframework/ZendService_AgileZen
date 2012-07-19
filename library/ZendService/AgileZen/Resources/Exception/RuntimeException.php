@@ -8,7 +8,7 @@
  * @package   Zend_Service
  */
 
-namespace Zend\Service\AgileZen\Resources\Exception;
+namespace ZendService\AgileZen\Resources\Exception;
 
 /**
  * @category   Zend

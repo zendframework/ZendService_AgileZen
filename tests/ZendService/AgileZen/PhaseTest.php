@@ -8,9 +8,9 @@
  * @package   Zend_Service
  */
 
-namespace ZendTest\Service\AgileZen;
+namespace ZendServiceTest\AgileZen;
 
-use Zend\Service\AgileZen\AgileZen as AgileZenService;
+use ZendService\AgileZen\AgileZen as AgileZenService;
 
 class PhaseTest extends \PHPUnit_Framework_TestCase
 {
@@ -19,7 +19,7 @@ class PhaseTest extends \PHPUnit_Framework_TestCase
     public function setUp()
     {
         if (!constant('TESTS_ZEND_SERVICE_AGILEZEN_ONLINE_ENABLED')) {
-            self::markTestSkipped('Zend\Service\AgileZen tests are not enabled');
+            self::markTestSkipped('ZendService\AgileZen tests are not enabled');
         }
         if(!defined('TESTS_ZEND_SERVICE_AGILEZEN_ONLINE_APIKEY')) {
             self::markTestSkipped('The ApiKey constant must be setted.');
@@ -40,7 +40,7 @@ class PhaseTest extends \PHPUnit_Framework_TestCase
                 $data
         );
         $this->assertTrue($this->agileZen->isSuccessful());
-        $this->assertTrue($phase instanceof \Zend\Service\AgileZen\Resources\Phase);
+        $this->assertTrue($phase instanceof \ZendService\AgileZen\Resources\Phase);
         $this->assertEquals($data['name'], $phase->getName());
         $this->assertEquals($data['description'], $phase->getDescription());
         self::$phaseId = $phase->getId();
@@ -57,7 +57,7 @@ class PhaseTest extends \PHPUnit_Framework_TestCase
         );
 
         $this->assertTrue($this->agileZen->isSuccessful());
-        $this->assertTrue($phase instanceof \Zend\Service\AgileZen\Resources\Phase);
+        $this->assertTrue($phase instanceof \ZendService\AgileZen\Resources\Phase);
         $this->assertEquals(self::$phaseId, $phase->getId());
     }
     public function testUpdatePhase()
@@ -76,7 +76,7 @@ class PhaseTest extends \PHPUnit_Framework_TestCase
                 $data
         );
         $this->assertTrue($this->agileZen->isSuccessful());
-        $this->assertTrue($phase instanceof \Zend\Service\AgileZen\Resources\Phase);
+        $this->assertTrue($phase instanceof \ZendService\AgileZen\Resources\Phase);
         $this->assertEquals(self::$phaseId, $phase->getId());
         $this->assertEquals($data['name'], $phase->getName());
         $this->assertEquals($data['description'], $phase->getDescription());

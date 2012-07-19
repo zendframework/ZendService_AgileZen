@@ -8,10 +8,10 @@
  * @package   Zend_Service
  */
 
-namespace ZendTest\Service\AgileZen;
+namespace ZendServiceTest\AgileZen;
 
-use Zend\Service\AgileZen\AgileZen as AgileZenService;
-use Zend\Service\AgileZen\Resources\Project;
+use ZendService\AgileZen\AgileZen as AgileZenService;
+use ZendService\AgileZen\Resources\Project;
 
 class ProjectTest extends \PHPUnit_Framework_TestCase
 {
@@ -22,7 +22,7 @@ class ProjectTest extends \PHPUnit_Framework_TestCase
     public function setUp()
     {
         if (!constant('TESTS_ZEND_SERVICE_AGILEZEN_ONLINE_ENABLED')) {
-            self::markTestSkipped('Zend\Service\AgileZen tests are not enabled');
+            self::markTestSkipped('ZendService\AgileZen tests are not enabled');
         }
         if(!defined('TESTS_ZEND_SERVICE_AGILEZEN_ONLINE_APIKEY')) {
             self::markTestSkipped('The ApiKey costant has to be set.');
@@ -48,12 +48,12 @@ class ProjectTest extends \PHPUnit_Framework_TestCase
             )
         );
         $project = new Project($this->agileZen, $data);
-        $this->assertTrue($project instanceof \Zend\Service\AgileZen\Resources\Project);
+        $this->assertTrue($project instanceof \ZendService\AgileZen\Resources\Project);
     }
     public function testMissDataArrayInConstruct()
     {
         $this->setExpectedException(
-            'Zend\Service\AgileZen\Resources\Exception\InvalidArgumentException',
+            'ZendService\AgileZen\Resources\Exception\InvalidArgumentException',
             'You must pass an array of data'
         );
         $project = new Project($this->agileZen, 1);
@@ -93,19 +93,19 @@ class ProjectTest extends \PHPUnit_Framework_TestCase
         $projects = $this->agileZen->getProjects();
 
         $this->assertTrue($this->agileZen->isSuccessful());
-        $this->assertTrue($projects instanceof \Zend\Service\AgileZen\Container);
+        $this->assertTrue($projects instanceof \ZendService\AgileZen\Container);
         if (count($projects)==0) {
             self::markTestSkipped('No project to test, I cannot continue the test.');
         }
-        $this->assertTrue($projects[0] instanceof \Zend\Service\AgileZen\Resources\Project);
+        $this->assertTrue($projects[0] instanceof \ZendService\AgileZen\Resources\Project);
     }
     public function testGetProject()
     {
         $project = $this->agileZen->getProject(constant('TESTS_ZEND_SERVICE_AGILEZEN_ONLINE_PROJECT_ID'));
 
         $this->assertTrue($this->agileZen->isSuccessful());
-        $this->assertTrue($project instanceof \Zend\Service\AgileZen\Resources\Project);
-        $this->assertTrue($project->getOwner() instanceof \Zend\Service\AgileZen\Resources\User);
+        $this->assertTrue($project instanceof \ZendService\AgileZen\Resources\Project);
+        $this->assertTrue($project->getOwner() instanceof \ZendService\AgileZen\Resources\User);
     }
     public function testUpdateProject()
     {
@@ -120,7 +120,7 @@ class ProjectTest extends \PHPUnit_Framework_TestCase
 
         $newProject = $this->agileZen->updateProject(constant('TESTS_ZEND_SERVICE_AGILEZEN_ONLINE_PROJECT_ID'), $data);
         $this->assertTrue($this->agileZen->isSuccessful());
-        $this->assertTrue($newProject instanceof \Zend\Service\AgileZen\Resources\Project);
+        $this->assertTrue($newProject instanceof \ZendService\AgileZen\Resources\Project);
         $this->assertEquals($data['description'], $newProject->getDescription());
         if ($this->agileZen->isSuccessful()) {
             $data = array(
@@ -128,7 +128,7 @@ class ProjectTest extends \PHPUnit_Framework_TestCase
             );
             $oldProject = $this->agileZen->updateProject(constant('TESTS_ZEND_SERVICE_AGILEZEN_ONLINE_PROJECT_ID'), $data);
             $this->assertTrue($this->agileZen->isSuccessful());
-            $this->assertTrue($oldProject instanceof \Zend\Service\AgileZen\Resources\Project);
+            $this->assertTrue($oldProject instanceof \ZendService\AgileZen\Resources\Project);
             $this->assertEquals($data['description'], $oldProject->getDescription());
         }
     }
@@ -137,8 +137,8 @@ class ProjectTest extends \PHPUnit_Framework_TestCase
         $members = $this->agileZen->getMembers(constant('TESTS_ZEND_SERVICE_AGILEZEN_ONLINE_PROJECT_ID'));
 
         $this->assertTrue($this->agileZen->isSuccessful());
-        $this->assertTrue($members instanceof \Zend\Service\AgileZen\Container);
-        $this->assertTrue($members[0] instanceof \Zend\Service\AgileZen\Resources\User);
+        $this->assertTrue($members instanceof \ZendService\AgileZen\Container);
+        $this->assertTrue($members[0] instanceof \ZendService\AgileZen\Resources\User);
     }
     public function testMembersByProject()
     {
@@ -146,8 +146,8 @@ class ProjectTest extends \PHPUnit_Framework_TestCase
 
         $this->assertTrue($this->agileZen->isSuccessful());
         $members = $project->getMembers();
-        $this->assertTrue($members instanceof \Zend\Service\AgileZen\Container);
-        $this->assertTrue($members[0] instanceof \Zend\Service\AgileZen\Resources\User);
+        $this->assertTrue($members instanceof \ZendService\AgileZen\Container);
+        $this->assertTrue($members[0] instanceof \ZendService\AgileZen\Resources\User);
     }
     public function testAddMemberProject()
     {
@@ -179,8 +179,8 @@ class ProjectTest extends \PHPUnit_Framework_TestCase
     {
         $phases = $this->agileZen->getPhases(constant('TESTS_ZEND_SERVICE_AGILEZEN_ONLINE_PROJECT_ID'));
         $this->assertTrue($this->agileZen->isSuccessful());
-        $this->assertTrue($phases instanceof \Zend\Service\AgileZen\Container);
-        $this->assertTrue($phases[0] instanceof \Zend\Service\AgileZen\Resources\Phase);
+        $this->assertTrue($phases instanceof \ZendService\AgileZen\Container);
+        $this->assertTrue($phases[0] instanceof \ZendService\AgileZen\Resources\Phase);
     }
     public function testPhasesByProject()
     {
@@ -188,17 +188,17 @@ class ProjectTest extends \PHPUnit_Framework_TestCase
 
         $this->assertTrue($this->agileZen->isSuccessful());
         $phases = $project->getPhases();
-        $this->assertTrue($phases instanceof \Zend\Service\AgileZen\Container);
-        $this->assertTrue($phases[0] instanceof \Zend\Service\AgileZen\Resources\Phase);
+        $this->assertTrue($phases instanceof \ZendService\AgileZen\Container);
+        $this->assertTrue($phases[0] instanceof \ZendService\AgileZen\Resources\Phase);
     }
     public function testProjectStories()
     {
         $stories = $this->agileZen->getStories(constant('TESTS_ZEND_SERVICE_AGILEZEN_ONLINE_PROJECT_ID'));
         $this->assertTrue($this->agileZen->isSuccessful());
         if (!empty($stories)) {
-            $this->assertTrue($stories instanceof \Zend\Service\AgileZen\Container);
+            $this->assertTrue($stories instanceof \ZendService\AgileZen\Container);
             foreach ($stories as $story) {
-                $this->assertTrue($story instanceof \Zend\Service\AgileZen\Resources\Story);
+                $this->assertTrue($story instanceof \ZendService\AgileZen\Resources\Story);
             }
         } else {
             $this->markTestSkipped('No stories for the project Id ' .
@@ -212,9 +212,9 @@ class ProjectTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue($this->agileZen->isSuccessful());
         $stories = $project->getStories();
         if (!empty($stories)) {
-            $this->assertTrue($stories instanceof \Zend\Service\AgileZen\Container);
+            $this->assertTrue($stories instanceof \ZendService\AgileZen\Container);
             foreach ($stories as $story) {
-                $this->assertTrue($story instanceof \Zend\Service\AgileZen\Resources\Story);
+                $this->assertTrue($story instanceof \ZendService\AgileZen\Resources\Story);
             }
         } else {
             $this->markTestSkipped('No stories for the project Id ' .
@@ -225,10 +225,10 @@ class ProjectTest extends \PHPUnit_Framework_TestCase
     {
         $roles = $this->agileZen->getRoles(constant('TESTS_ZEND_SERVICE_AGILEZEN_ONLINE_PROJECT_ID'));
         $this->assertTrue($this->agileZen->isSuccessful());
-        $this->assertTrue($roles instanceof \Zend\Service\AgileZen\Container);
+        $this->assertTrue($roles instanceof \ZendService\AgileZen\Container);
         $found = false;
         foreach ($roles as $role) {
-            $this->assertTrue($role instanceof \Zend\Service\AgileZen\Resources\Role);
+            $this->assertTrue($role instanceof \ZendService\AgileZen\Resources\Role);
             if (strtolower($role->getName())=='administrators') {
                 $found = true;
                 self::$roleId = $role->getId();
@@ -247,7 +247,7 @@ class ProjectTest extends \PHPUnit_Framework_TestCase
             self::$roleId
         );
         $this->assertTrue($this->agileZen->isSuccessful());
-        $this->assertTrue($role instanceof \Zend\Service\AgileZen\Resources\Role);
+        $this->assertTrue($role instanceof \ZendService\AgileZen\Resources\Role);
         $this->assertEquals(strtolower($role->getName()), 'administrators');
     }
     public function testProjectInvites()
@@ -258,8 +258,8 @@ class ProjectTest extends \PHPUnit_Framework_TestCase
              $this->markTestSkipped('No invites founded for the project Id ' .
                     constant('TESTS_ZEND_SERVICE_AGILEZEN_ONLINE_PROJECT_ID'));
         } else {
-            $this->assertTrue($invites instanceof \Zend\Service\AgileZen\Container);
-            $this->assertTrue($invites[0] instanceof \Zend\Service\AgileZen\Resources\Invite);
+            $this->assertTrue($invites instanceof \ZendService\AgileZen\Container);
+            $this->assertTrue($invites[0] instanceof \ZendService\AgileZen\Resources\Invite);
             self::$inviteId = $invites[0]->getId();
         }
     }
@@ -274,7 +274,7 @@ class ProjectTest extends \PHPUnit_Framework_TestCase
             self::$inviteId
         );
         $this->assertTrue($this->agileZen->isSuccessful());
-        $this->assertTrue($invite instanceof \Zend\Service\AgileZen\Resources\Invite);
+        $this->assertTrue($invite instanceof \ZendService\AgileZen\Resources\Invite);
     }
     public function testProjectMetrics()
     {

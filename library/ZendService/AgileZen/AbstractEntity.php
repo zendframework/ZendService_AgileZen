@@ -8,7 +8,7 @@
  * @package   Zend_Service
  */
 
-namespace Zend\Service\AgileZen;
+namespace ZendService\AgileZen;
 
 /**
  * @category   Zend

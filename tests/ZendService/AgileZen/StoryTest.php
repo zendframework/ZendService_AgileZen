@@ -8,9 +8,9 @@
  * @package   Zend_Service
  */
 
-namespace ZendTest\Service\AgileZen;
+namespace ZendServiceTest\AgileZen;
 
-use Zend\Service\AgileZen\AgileZen as AgileZenService;
+use ZendService\AgileZen\AgileZen as AgileZenService;
 
 class StoryTest extends \PHPUnit_Framework_TestCase
 {
@@ -19,7 +19,7 @@ class StoryTest extends \PHPUnit_Framework_TestCase
     public function setUp()
     {
         if (!constant('TESTS_ZEND_SERVICE_AGILEZEN_ONLINE_ENABLED')) {
-            self::markTestSkipped('Zend\Service\AgileZen tests are not enabled');
+            self::markTestSkipped('ZendService\AgileZen tests are not enabled');
         }
         if(!defined('TESTS_ZEND_SERVICE_AGILEZEN_ONLINE_APIKEY')) {
             self::markTestSkipped('The ApiKey costant has to be set.');
@@ -41,13 +41,13 @@ class StoryTest extends \PHPUnit_Framework_TestCase
         );
         $story = $this->agileZen->addStory(constant('TESTS_ZEND_SERVICE_AGILEZEN_ONLINE_PROJECT_ID'), $data, $params);
         $this->assertTrue($this->agileZen->isSuccessful());
-        $this->assertTrue($story instanceof \Zend\Service\AgileZen\Resources\Story);
+        $this->assertTrue($story instanceof \ZendService\AgileZen\Resources\Story);
         $this->assertEquals($data['text'], $story->getText());
         self::$storyId = $story->getId();
         $tags = $story->getTags();
-        $this->assertTrue($tags instanceof \Zend\Service\AgileZen\Container);
+        $this->assertTrue($tags instanceof \ZendService\AgileZen\Container);
         foreach ($tags as $tag) {
-            $this->assertTrue($tag instanceof \Zend\Service\AgileZen\Resources\Tag);
+            $this->assertTrue($tag instanceof \ZendService\AgileZen\Resources\Tag);
             $this->assertTrue(($tag->getName()=='foo') || ($tag->getName()=='bar'));
         }
     }
@@ -67,7 +67,7 @@ class StoryTest extends \PHPUnit_Framework_TestCase
             $data
         );
         $this->assertTrue($this->agileZen->isSuccessful());
-        $this->assertTrue($story instanceof \Zend\Service\AgileZen\Resources\Story);
+        $this->assertTrue($story instanceof \ZendService\AgileZen\Resources\Story);
         $this->assertEquals($data['text'], $story->getText());
     }
     public function testGetStory()
@@ -81,7 +81,7 @@ class StoryTest extends \PHPUnit_Framework_TestCase
                 self::$storyId
         );
         $this->assertTrue($this->agileZen->isSuccessful());
-        $this->assertTrue($story instanceof \Zend\Service\AgileZen\Resources\Story);
+        $this->assertTrue($story instanceof \ZendService\AgileZen\Resources\Story);
         $this->assertEquals(self::$storyId, $story->getId());
     }
     public function testGetStoryWithDetails()
@@ -99,7 +99,7 @@ class StoryTest extends \PHPUnit_Framework_TestCase
                 $params
         );
         $this->assertTrue($this->agileZen->isSuccessful());
-        $this->assertTrue($story instanceof \Zend\Service\AgileZen\Resources\Story);
+        $this->assertTrue($story instanceof \ZendService\AgileZen\Resources\Story);
         $this->assertEquals(self::$storyId, $story->getId());
         $this->assertEquals('updated details of the test story', $story->getDetails());
     }
@@ -118,12 +118,12 @@ class StoryTest extends \PHPUnit_Framework_TestCase
                 $params
         );
         $this->assertTrue($this->agileZen->isSuccessful());
-        $this->assertTrue($story instanceof \Zend\Service\AgileZen\Resources\Story);
+        $this->assertTrue($story instanceof \ZendService\AgileZen\Resources\Story);
         $this->assertEquals(self::$storyId, $story->getId());
         $tags = $story->getTags();
-        $this->assertTrue($tags instanceof \Zend\Service\AgileZen\Container);
+        $this->assertTrue($tags instanceof \ZendService\AgileZen\Container);
         foreach ($tags as $tag) {
-            $this->assertTrue($tag instanceof \Zend\Service\AgileZen\Resources\Tag);
+            $this->assertTrue($tag instanceof \ZendService\AgileZen\Resources\Tag);
             $this->assertTrue(($tag->getName()==='foo') || ($tag->getName()==='bar'));
         }
     }

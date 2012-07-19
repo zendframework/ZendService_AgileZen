@@ -8,9 +8,9 @@
  * @package   Zend_Service
  */
 
-namespace ZendTest\Service\AgileZen;
+namespace ZendServiceTest\AgileZen;
 
-use Zend\Service\AgileZen\AgileZen as AgileZenService;
+use ZendService\AgileZen\AgileZen as AgileZenService;
 
 class AgileZenTest extends \PHPUnit_Framework_TestCase
 {
@@ -19,7 +19,7 @@ class AgileZenTest extends \PHPUnit_Framework_TestCase
     public function setUp()
     {
         if (!constant('TESTS_ZEND_SERVICE_AGILEZEN_ONLINE_ENABLED')) {
-            self::markTestSkipped('Zend\Service\AgileZen tests are not enabled');
+            self::markTestSkipped('ZendService\AgileZen tests are not enabled');
         }
         if(!defined('TESTS_ZEND_SERVICE_AGILEZEN_ONLINE_APIKEY')) {
             self::markTestSkipped('The ApiKey costant has to be set.');
@@ -29,7 +29,7 @@ class AgileZenTest extends \PHPUnit_Framework_TestCase
     public function testNoKeyException()
     {
         $this->setExpectedException(
-            'Zend\Service\AgileZen\Exception\InvalidArgumentException',
+            'ZendService\AgileZen\Exception\InvalidArgumentException',
             'You need an API key to use AgileZen'
         );
         $this->agileZen = new AgileZenService('');

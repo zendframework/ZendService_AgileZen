@@ -8,7 +8,7 @@
  * @package   Zend_Service
  */
 
-namespace Zend\Service\AgileZen;
+namespace ZendService\AgileZen;
 
 use ArrayAccess;
 use Countable;
@@ -23,7 +23,7 @@ use Traversable;
 class Container implements Countable, Iterator, ArrayAccess
 {
     /**
-     * @var array of Zend\Service\AgileZen\Resources\*
+     * @var array of ZendService\AgileZen\Resources\*
      */
     protected $objects = array();
 
@@ -49,7 +49,7 @@ class Container implements Countable, Iterator, ArrayAccess
      *
      * @var string
      */
-    protected $namespacePrefix = 'Zend\Service\AgileZen\Resources';
+    protected $namespacePrefix = 'ZendService\AgileZen\Resources';
 
     /**
      * Constructor

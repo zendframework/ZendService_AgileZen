@@ -8,11 +8,11 @@
  * @package   Zend_Service
  */
 
-namespace Zend\Service\AgileZen\Resources;
+namespace ZendService\AgileZen\Resources;
 
-use Zend\Service\AgileZen\AbstractEntity;
-use Zend\Service\AgileZen\AgileZen;
-use Zend\Service\AgileZen\Container;
+use ZendService\AgileZen\AbstractEntity;
+use ZendService\AgileZen\AgileZen;
+use ZendService\AgileZen\Container;
 
 /**
  * @category   Zend
@@ -100,7 +100,7 @@ class Story extends AbstractEntity
     /**
      * Tags
      *
-     * @var Zend\Service\AgileZen\Container
+     * @var ZendService\AgileZen\Container
      */
     protected $tags;
     /**
@@ -271,7 +271,7 @@ class Story extends AbstractEntity
      * Get the tasks
      *
      * @param  array $params
-     * @return \Zend\Service\AgileZen\Container
+     * @return \ZendService\AgileZen\Container
      */
     public function getTasks($params=array())
     {
@@ -326,7 +326,7 @@ class Story extends AbstractEntity
     /**
      * Get the comments
      *
-     * @return \Zend\Service\AgileZen\Container
+     * @return \ZendService\AgileZen\Container
      */
     public function getComments()
     {
@@ -390,7 +390,7 @@ class Story extends AbstractEntity
     /**
      * Get tags
      *
-     * @return Zend\Service\AgileZen\Container
+     * @return ZendService\AgileZen\Container
      */
     public function getTags()
     {

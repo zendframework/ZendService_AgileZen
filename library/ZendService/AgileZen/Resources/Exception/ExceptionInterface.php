@@ -8,9 +8,9 @@
  * @package   Zend_Service
  */
 
-namespace Zend\Service\AgileZen\Resources\Exception;
+namespace ZendService\AgileZen\Resources\Exception;
 
-use Zend\Service\AgileZen\Exception\ExceptionInterface as AgileZenException;
+use ZendService\AgileZen\Exception\ExceptionInterface as AgileZenException;
 
 /**
  * @category   Zend

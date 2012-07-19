@@ -8,9 +8,9 @@
  * @package   Zend_Service
  */
 
-namespace ZendTest\Service\AgileZen;
+namespace ZendServiceTest\AgileZen;
 
-use Zend\Service\AgileZen\AgileZen as AgileZenService;
+use ZendService\AgileZen\AgileZen as AgileZenService;
 
 class RoleTest extends \PHPUnit_Framework_TestCase
 {
@@ -19,7 +19,7 @@ class RoleTest extends \PHPUnit_Framework_TestCase
     public function setUp()
     {
         if (!constant('TESTS_ZEND_SERVICE_AGILEZEN_ONLINE_ENABLED')) {
-            self::markTestSkipped('Zend\Service\AgileZen tests are not enabled');
+            self::markTestSkipped('ZendService\AgileZen tests are not enabled');
         }
         if(!defined('TESTS_ZEND_SERVICE_AGILEZEN_ONLINE_APIKEY')) {
             self::markTestSkipped('The ApiKey costant has to be set.');
@@ -34,9 +34,9 @@ class RoleTest extends \PHPUnit_Framework_TestCase
         $roles = $this->agileZen->getRoles(constant('TESTS_ZEND_SERVICE_AGILEZEN_ONLINE_PROJECT_ID'));
 
         $this->assertTrue($this->agileZen->isSuccessful());
-        $this->assertTrue($roles instanceof \Zend\Service\AgileZen\Container);
+        $this->assertTrue($roles instanceof \ZendService\AgileZen\Container);
         foreach ($roles as $role) {
-            $this->assertTrue($role instanceof \Zend\Service\AgileZen\Resources\Role);
+            $this->assertTrue($role instanceof \ZendService\AgileZen\Resources\Role);
         }
     }
     public function testAddRole()
@@ -47,7 +47,7 @@ class RoleTest extends \PHPUnit_Framework_TestCase
         );
         $role = $this->agileZen->addRole(constant('TESTS_ZEND_SERVICE_AGILEZEN_ONLINE_PROJECT_ID'), $data);
         $this->assertTrue($this->agileZen->isSuccessful());
-        $this->assertTrue($role instanceof \Zend\Service\AgileZen\Resources\Role);
+        $this->assertTrue($role instanceof \ZendService\AgileZen\Resources\Role);
         $this->assertEquals($data['name'], $role->getName());
         $this->assertEquals($data['access'], $role->getAccess());
         if (!empty($role)) {
@@ -70,7 +70,7 @@ class RoleTest extends \PHPUnit_Framework_TestCase
             $data
         );
         $this->assertTrue($this->agileZen->isSuccessful());
-        $this->assertTrue($role instanceof \Zend\Service\AgileZen\Resources\Role);
+        $this->assertTrue($role instanceof \ZendService\AgileZen\Resources\Role);
         $this->assertEquals(self::$roleId, $role->getId());
         $this->assertEquals($data['name'], $role->getName());
         $this->assertEquals($data['access'], $role->getAccess());
@@ -86,7 +86,7 @@ class RoleTest extends \PHPUnit_Framework_TestCase
                 self::$roleId
         );
         $this->assertTrue($this->agileZen->isSuccessful());
-        $this->assertTrue($role instanceof \Zend\Service\AgileZen\Resources\Role);
+        $this->assertTrue($role instanceof \ZendService\AgileZen\Resources\Role);
         $this->assertEquals(self::$roleId, $role->getId());
     }
     public function testRemoveRole()

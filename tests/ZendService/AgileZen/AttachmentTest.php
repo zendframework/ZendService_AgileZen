@@ -8,9 +8,9 @@
  * @package   Zend_Service
  */
 
-namespace ZendTest\Service\AgileZen;
+namespace ZendServiceTest\AgileZen;
 
-use Zend\Service\AgileZen\AgileZen as AgileZenService;
+use ZendService\AgileZen\AgileZen as AgileZenService;
 
 class AttachmentTest extends \PHPUnit_Framework_TestCase
 {
@@ -19,7 +19,7 @@ class AttachmentTest extends \PHPUnit_Framework_TestCase
     public function setUp()
     {
         if (!constant('TESTS_ZEND_SERVICE_AGILEZEN_ONLINE_ENABLED')) {
-            self::markTestSkipped('Zend\Service\AgileZen tests are not enabled');
+            self::markTestSkipped('ZendService\AgileZen tests are not enabled');
         }
         if(!defined('TESTS_ZEND_SERVICE_AGILEZEN_ONLINE_APIKEY')) {
             self::markTestSkipped('The ApiKey costant has to be set.');
@@ -45,7 +45,7 @@ class AttachmentTest extends \PHPUnit_Framework_TestCase
                     constant('TESTS_ZEND_SERVICE_AGILEZEN_ONLINE_PROJECT_ID'));
         }
         $this->assertTrue($this->agileZen->isSuccessful());
-        $this->assertTrue($attachment instanceof \Zend\Service\AgileZen\Resources\Task);
+        $this->assertTrue($attachment instanceof \ZendService\AgileZen\Resources\Task);
         self::$attachId = $attachment->getId();
     }
 
@@ -61,9 +61,9 @@ class AttachmentTest extends \PHPUnit_Framework_TestCase
                     constant('TESTS_ZEND_SERVICE_AGILEZEN_ONLINE_PROJECT_ID') . ' and story Id ' .
                     constant('TESTS_ZEND_SERVICE_AGILEZEN_ONLINE_STORY_ID'));
         }
-        $this->assertTrue($attachments instanceof \Zend\Service\AgileZen\Container);
+        $this->assertTrue($attachments instanceof \ZendService\AgileZen\Container);
         foreach ($attachments as $attach) {
-            $this->assertTrue($attach instanceof \Zend\Service\AgileZen\Resources\Attachment);
+            $this->assertTrue($attach instanceof \ZendService\AgileZen\Resources\Attachment);
         }
     }
     public function testGetAttachment()
@@ -79,7 +79,7 @@ class AttachmentTest extends \PHPUnit_Framework_TestCase
                 self::$taskId
         );
         $this->assertTrue($this->agileZen->isSuccessful());
-        $this->assertTrue($attachment instanceof \Zend\Service\AgileZen\Resources\Attachment);
+        $this->assertTrue($attachment instanceof \ZendService\AgileZen\Resources\Attachment);
         $this->assertEquals(self::$attachId, $attachment->getId());
     }
 
@@ -100,7 +100,7 @@ class AttachmentTest extends \PHPUnit_Framework_TestCase
                 $data
         );
         $this->assertTrue($this->agileZen->isSuccessful());
-        $this->assertTrue($attachment instanceof \Zend\Service\AgileZen\Resources\Attachment);
+        $this->assertTrue($attachment instanceof \ZendService\AgileZen\Resources\Attachment);
         $this->assertEquals(self::$attachId, $attachment->getId());
         $this->assertEquals($data['filename'], $attachment->getFileName());
     }

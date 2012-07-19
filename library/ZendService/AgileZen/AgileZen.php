@@ -8,7 +8,7 @@
  * @package   Zend_Service
  */
 
-namespace Zend\Service\AgileZen;
+namespace ZendService\AgileZen;
 
 use DOMDocument;
 use Zend\Http\Client as HttpClient;

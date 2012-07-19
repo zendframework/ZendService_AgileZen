@@ -8,9 +8,9 @@
  * @package   Zend_Service
  */
 
-namespace ZendTest\Service\AgileZen;
+namespace ZendServiceTest\AgileZen;
 
-use Zend\Service\AgileZen\AgileZen as AgileZenService;
+use ZendService\AgileZen\AgileZen as AgileZenService;
 
 class TaskTest extends \PHPUnit_Framework_TestCase
 {
@@ -19,7 +19,7 @@ class TaskTest extends \PHPUnit_Framework_TestCase
     public function setUp()
     {
         if (!constant('TESTS_ZEND_SERVICE_AGILEZEN_ONLINE_ENABLED')) {
-            self::markTestSkipped('Zend\Service\AgileZen tests are not enabled');
+            self::markTestSkipped('ZendService\AgileZen tests are not enabled');
         }
         if(!defined('TESTS_ZEND_SERVICE_AGILEZEN_ONLINE_APIKEY')) {
             self::markTestSkipped('The ApiKey costant has to be set.');
@@ -41,7 +41,7 @@ class TaskTest extends \PHPUnit_Framework_TestCase
                 $data
         );
         $this->assertTrue($this->agileZen->isSuccessful());
-        $this->assertTrue($task instanceof \Zend\Service\AgileZen\Resources\Task);
+        $this->assertTrue($task instanceof \ZendService\AgileZen\Resources\Task);
         self::$taskId = $task->getId();
     }
     public function testGetTasks()
@@ -56,9 +56,9 @@ class TaskTest extends \PHPUnit_Framework_TestCase
                     constant('TESTS_ZEND_SERVICE_AGILEZEN_ONLINE_PROJECT_ID') . ' and story Id ' .
                     constant('TESTS_ZEND_SERVICE_AGILEZEN_ONLINE_STORY_ID'));
         }
-        $this->assertTrue($tasks instanceof \Zend\Service\AgileZen\Container);
+        $this->assertTrue($tasks instanceof \ZendService\AgileZen\Container);
         foreach ($tasks as $task) {
-            $this->assertTrue($task instanceof \Zend\Service\AgileZen\Resources\Task);
+            $this->assertTrue($task instanceof \ZendService\AgileZen\Resources\Task);
         }
     }
     public function testGetTask()
@@ -74,7 +74,7 @@ class TaskTest extends \PHPUnit_Framework_TestCase
                 self::$taskId
         );
         $this->assertTrue($this->agileZen->isSuccessful());
-        $this->assertTrue($task instanceof \Zend\Service\AgileZen\Resources\Task);
+        $this->assertTrue($task instanceof \ZendService\AgileZen\Resources\Task);
         $this->assertEquals(self::$taskId, $task->getId());
     }
 
@@ -96,7 +96,7 @@ class TaskTest extends \PHPUnit_Framework_TestCase
                 $data
         );
         $this->assertTrue($this->agileZen->isSuccessful());
-        $this->assertTrue($task instanceof \Zend\Service\AgileZen\Resources\Task);
+        $this->assertTrue($task instanceof \ZendService\AgileZen\Resources\Task);
         $this->assertEquals(self::$taskId, $task->getId());
         $this->assertEquals($data['text'], $task->getText());
         $this->assertEquals($data['status'], $task->getStatus());

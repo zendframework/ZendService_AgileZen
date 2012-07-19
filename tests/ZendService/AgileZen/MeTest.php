@@ -8,16 +8,16 @@
  * @package   Zend_Service
  */
 
-namespace ZendTest\Service\AgileZen;
+namespace ZendServiceTest\AgileZen;
 
-use Zend\Service\AgileZen\AgileZen as AgileZenService;
+use ZendService\AgileZen\AgileZen as AgileZenService;
 
 class MeTest extends \PHPUnit_Framework_TestCase
 {
     public function setUp()
     {
         if (!constant('TESTS_ZEND_SERVICE_AGILEZEN_ONLINE_ENABLED')) {
-            self::markTestSkipped('Zend\Service\AgileZen tests are not enabled');
+            self::markTestSkipped('ZendService\AgileZen tests are not enabled');
         }
         if(!defined('TESTS_ZEND_SERVICE_AGILEZEN_ONLINE_APIKEY')) {
             self::markTestSkipped('The ApiKey costant has to be set.');
@@ -28,7 +28,7 @@ class MeTest extends \PHPUnit_Framework_TestCase
     {
         $me = $this->agileZen->getMe();
         $this->assertTrue($this->agileZen->isSuccessful());
-        $this->assertTrue($me instanceof \Zend\Service\AgileZen\Resources\User);
+        $this->assertTrue($me instanceof \ZendService\AgileZen\Resources\User);
     }
     public function testUpdateMe()
     {
@@ -57,9 +57,9 @@ class MeTest extends \PHPUnit_Framework_TestCase
     {
         $stories = $this->agileZen->getMyStories();
         $this->assertTrue($this->agileZen->isSuccessful());
-        $this->assertTrue($stories instanceof \Zend\Service\AgileZen\Container);
+        $this->assertTrue($stories instanceof \ZendService\AgileZen\Container);
         foreach ($stories as $story) {
-            $this->assertTrue($story instanceof \Zend\Service\AgileZen\Resources\Story);
+            $this->assertTrue($story instanceof \ZendService\AgileZen\Resources\Story);
         }
     }
 }
