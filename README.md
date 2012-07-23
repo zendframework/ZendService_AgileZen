@@ -1,9 +1,9 @@
-ZendService\XXXXXX component
+ZendService\AgileZen component
 
 You can install using:
 
 ```
-curl -s http://getcomposer.org/installer | php
+curl -s https://getcomposer.org/installer | php
 php composer.phar install
 ```
 
